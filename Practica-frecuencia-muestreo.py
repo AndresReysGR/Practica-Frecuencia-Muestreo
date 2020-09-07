@@ -13,8 +13,8 @@ wave_sonido = sonido.make_wave(duration=1.0, start=0, framerate=44100)
 decorate(xlabel="Tiempo (s)")
 decorate(ylabel="Amplitud")
 
-wave_sonido.plot()
-plt.show()
+#wave_sonido.plot()
+#plt.show()
 
 wave_sonido.write("sonido_original.wav")
 
@@ -31,5 +31,18 @@ print("Frecuencia de muestreo modificada: " + str(wave_sonido.framerate))
 
 decorate(xlabel="Tiempo (s)")
 decorate(ylabel="Amplitud")
-wave_sonido.plot()
+#wave_sonido.plot()
+#plt.show()
+
+campana = read_wave("dsp-recursos/18871__zippi1__sound-bell-440hz.wav")
+segmento_campana = campana.segment(8,1)
+decorate(xlabel="Tiempo (s)")
+decorate(ylabel="Amplitud")
+segmento_campana.plot()
 plt.show()
+
+segmento_campana.write("campana_original.wav")
+
+segmento_campana.framerate = segmento_campana.framerate / 2 
+
+segmento_campana.write("campana_modificada.wav")
